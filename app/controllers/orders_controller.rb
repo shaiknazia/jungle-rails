@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+  before_filter :authorize
   def show
     @order = Order.find(params[:id])
   end
@@ -22,7 +22,6 @@ class OrdersController < ApplicationController
   private
 
   def empty_cart!
-    # empty hash means no products in cart :)
     update_cart({})
   end
 
